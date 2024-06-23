@@ -21,20 +21,29 @@
     </div>
 
     <div class="col-md-6 pt-4 pl-5 pr-5">
-		<form>
+		<form method="POST" action="autenticar">
 			<div class="row">
 				<div class="col">
-					<input type="text" class="form-control" placeholder="E-mail">
+					<input type="text" name="email"  class="form-control" placeholder="E-mail">
 				</div>
 				<div class="col">
-					<input type="text" class="form-control" placeholder="Senha">
+					<input type="password" name="senha" class="form-control" placeholder="Senha">
 				</div>
 				<div class="col-auto">
 					<button type="submit" class="btn btn-button mb-2">Entrar</button>
 				</div>
 			</div>
+			<?php if($this->view->login == 'erro') { ?> 
+			<div class="row">
+					<div class="rol">
+						<span class="text text-danger">
+						Email ou senha incorreto(s).
+						</span>
+					</div>
+				</div>
+			<?php } ?>
 		</form>
-
+		
 		<div class="row pt-5 pl-5 pr-5">
 			<div class="col pl-5 pr-5">
 				<img src="/img/x_logo.png" />
