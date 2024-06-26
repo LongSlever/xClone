@@ -26,6 +26,22 @@ h2 {
     font-weight: bold;
 }
 
+/* time line*/
+
+.bannert {
+    background-color: #000000;
+    height: 100%;
+    color: white;
+}
+
+.bannert textarea {
+    background-color: black;
+}
+
+.bannert textarea {
+    background-color: black;
+}
+
 .banner {
 	height: 100%;
 	background-color: #000000;

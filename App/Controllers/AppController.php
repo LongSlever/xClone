@@ -11,8 +11,6 @@ use MF\Controller\Action;
                 $tweet = Container::getModel('Tweet');
                 $tweet->__set('id_usuario', $_SESSION['id']);
                 $tweets = $tweet->getAll();
-                print_r($tweets);
-
                 $this->view->tweets = $tweets;
             $this->render('timeline');
         }
@@ -39,21 +37,18 @@ use MF\Controller\Action;
 
         public function quemSeguir() {
             $this->validaAutenticacao();
-
             $usuarios = array();
-
             $pesquisarPor = isset($_GET['pesquisarPor']) ? $_GET['pesquisarPor'] : '';
-            if($pesquisarPor != ' ') {
+            if($pesquisarPor != '') {
                 $usuario = Container::getModel('Usuario');
                 $usuario->__set('nome', $pesquisarPor);
                 $usuarios = $usuario->getAll();
-
-                print_r($usuarios);
             }
 
             $this->view->usuarios = $usuarios;
 
             $this->render('quemSeguir');
+
         }
        
     }
