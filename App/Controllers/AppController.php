@@ -29,9 +29,21 @@ use MF\Controller\Action;
                 $tweet = Container::getModel('Tweet');
                 $tweet->__set('tweet', $_POST['tweet']);
                 $tweet->__set('id_usuario', $_SESSION['id']);
-                $tweet->salvar();
-                header('Location: /timeline');
-            
+                if(($_POST['tweet']) == '') {
+                    header('Location: /timeline?erro=Erro');
+                }else {
+                    $tweet->salvar();
+                    header('Location: /timeline');
+                } 
+        }
+
+        public function deletar() {
+            $this->validaAutenticacao();
+
+            $tweet = Container::getModel('Tweet');
+            $tweet->__set('id', $_GET['id']);
+            $tweet->deletar();
+            header('Location: /timeline');
         }
 
         public function validaAutenticacao() {
@@ -46,17 +58,21 @@ use MF\Controller\Action;
         public function quemSeguir() {
             $this->validaAutenticacao();
 
-            
-
+            // Intância em nível global no módulo para usamos dentro do IF e para informar as views nas informações
+            $usuario = Container::getModel('Usuario');
             $usuarios = array();
             $pesquisarPor = isset($_GET['pesquisarPor']) ? $_GET['pesquisarPor'] : '';
             if($pesquisarPor != '') {
-                $usuario = Container::getModel('Usuario');
+                
                 $usuario->__set('nome', $pesquisarPor);
                 $usuario->__set('id', $_SESSION['id']);
                 $usuarios = $usuario->getAll();
             }
-
+            $usuario->__set("id", $_SESSION['id']);
+            $this->view->info_usuario = $usuario->getInfoUsuario();
+            $this->view->total_tweets =$usuario->getTotalTweets();
+            $this->view->total_seguindo =$usuario->getTotalSeguindo();
+            $this->view->total_seguidores =$usuario->getTotalSeguidores();
             $this->view->usuarios = $usuarios;
 
             $this->render('quemSeguir');

@@ -6,6 +6,14 @@ body {
 	font-family: "Segoe UI", Arial, sans-serif;
 }
 
+/* logo e header */
+
+.img-logo {
+    width: 250px;
+}
+
+/* */
+
 h1 {
 	display: block;
     font-size: 2em;
@@ -28,6 +36,10 @@ h2 {
 
 /* time line*/
 
+.img-logo-white {
+    width: 50px;
+}
+
 .bannert {
     background-color: #000000;
     height: 100%;
@@ -38,9 +50,10 @@ h2 {
     background-color: black;
 }
 
-.bannert textarea {
-    background-color: black;
+.bannert a {
+    color: white;
 }
+
 
 .banner {
 	height: 100%;
@@ -90,10 +103,52 @@ h2 {
 .btn-button {
     color: white;
     background-color: #000000;
+    border: 1px solid white;
 }
 
 .btn-button:hover {
     color: white;
     background-color: #14171a;
     transition: 1s;
+}
+
+
+/* perfil */ 
+
+.perfilTitulo {
+    font-weight: bold;
+    font-size: 1,5em;
+}
+
+.perfilPainel:hover {
+    background-color: #14171a;
+    transition: 1s;
+}
+
+/* quem seguir */
+
+.quemSeguir {
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid white;
+}
+
+.quemSeguir:hover {
+    background-color: #14171a;
+    transition: 0.7s;
+}
+
+.quemSeguir a {
+    text-decoration: none;
+}
+
+.quemSeguir a:hover {
+    color: #e6ecf0;
+}
+
+
+
+.quemSeguirTitulo {
+    font-weight: bold;
+    font-size: 1.5em;
 }

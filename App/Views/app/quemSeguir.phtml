@@ -5,18 +5,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Veja quem você quer seguir</title>
 </head>
-<body>
+<body class="bannert">
 <nav class="navbar navbar-expand-lg menu">
 	<div class="container">
-	  <div class="navbar-nav">
-	  	<a class="menuItem" href="/timeline">
-	  		Home
-	  	</a>
-
-	  	<a class="menuItem" href="/sair">
-	  		Sair
-	  	</a>
-			<img src="/img/x_logo.png" class="menuIco" />
+	  <div  class="navbar" >	
+		<div>
+			<a class="navbar-brand"  href="/timeline">
+			<img class="img-logo-white" src="/img/x_logo_white.png" class="menuIco" />
+			</a>
+		</div>	
+		<div class="col-auto ml-auto" >
+			<a class="menuItem m-5" href="/timeline">
+				Home
+			</a>
+			<a class="menuItem m-5" href="/sair">
+				Sair
+			</a>
+		</div>
 	  </div>
 	</div>
 </nav>
@@ -32,10 +37,11 @@
 				</div>
 
 				<div class="perfilPainel">
-					
 					<div class="row mt-2 mb-2">
 						<div class="col mb-2">
-							<span class="perfilPainelNome">Nome do Usuário</span>
+							<span class="perfilTitulo">
+								<?= $this->view->info_usuario['nome'] ?>
+							</span>
 						</div>
 					</div>
 
@@ -43,17 +49,17 @@
 
 						<div class="col">
 							<span class="perfilPainelItem">Tweets</span><br />
-							<span class="perfilPainelItemValor">0</span>
+							<span class="perfilPainelItemValor"> <?= $this->view->total_tweets['total_tweet']  ?></span>
 						</div>
 
 						<div class="col">
 							<span class="perfilPainelItem">Seguindo</span><br />
-							<span class="perfilPainelItemValor">0</span>
+							<span class="perfilPainelItemValor"><?= $this->view->total_seguindo['total_seguindo'] ?></span>
 						</div>
 
 						<div class="col">
 							<span class="perfilPainelItem">Seguidores</span><br />
-							<span class="perfilPainelItemValor">0</span>
+							<span class="perfilPainelItemValor"><?= $this->view->total_seguidores['total_seguidores'] ?></span>
 						</div>
 
 					</div>
@@ -73,7 +79,7 @@
 								<div class="input-group mb-3">
 									<input type="text" name="pesquisarPor" class="form-control" placeholder="Quem você está procurando?">
 									<div class="input-group-append">
-										<button class="btn btn-primary" type="submit">Procurar</button>
+										<button class="btn btn-button" type="submit">Procurar</button>
 									</div>
 								</div>
 							</form>
@@ -84,25 +90,22 @@
 
 
 			<?php foreach($this->view->usuarios as $indice_arr => $usuario) { ?>
-			<div class="row mb-2">
+			<div class="row mb-2 text-dark">
 				<div class="col">
 					<div class="card">
 						<div class="card-body">
 							<div class="row">
 								<div class="col-md-6">
 									<?= $usuario['nome'] ?>
-								</div>
-
-
-								  
+								</div>  
 								<div class="col-md-6 d-flex justify-content-end">
 									<div>
 									<?php if($usuario['seguindo_sn'] != 1) { ?>
-										<a href="/acao?acao=seguir&id_usuario=<?= $usuario['id'] ?>" class="btn btn-success">Seguir</a>
+										<a href="/acao?acao=seguir&id_usuario=<?= $usuario['id'] ?>" class="btn btn-button">Seguir</a>
 									<?php }?>
 									<?php if($usuario['seguindo_sn'] != 0) { ?>
-										<a href="/acao?acao=deixar_de_seguir&id_usuario=<?= $usuario['id'] ?> " class="btn btn-danger">Deixar de seguir</a>
-									<?php }?>
+										<a  href="/acao?acao=deixar_de_seguir&id_usuario=<?= $usuario['id'] ?> " class="btn btn-button">Deixar de seguir</a>
+										<?php }?>
 									</div>
 								</div>
 							</div>
