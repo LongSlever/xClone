@@ -37,7 +37,7 @@
 				</div>
 
 				<div class="perfilPainel">
-				<div class="row mt-2 mb-2">
+					<div class="row mt-2 mb-2">
 						<div class="col mb-2">
 							<img class="perfilFoto" src="/img/<?= $this->view->info_usuario['imagem'] ?>">
 						</div>
@@ -46,7 +46,13 @@
 						<div class="col mb-2">
 							<span class="perfilTitulo">
 								<?= $this->view->info_usuario['nome'] ?>
+								<p class="arroba"> <?= $this->view->info_usuario['nickname'] ?> </p>
 							</span>
+						</div>
+					</div>
+					<div class="row mt-2 mb-2">
+						<div class="col mb-2">
+								<p class="descricao"> <?= $this->view->info_usuario['descricao'] ?> </p>
 						</div>
 					</div>
 
@@ -103,7 +109,9 @@
 
 								<div class="col-md-9">
 								<img class="perfilFoto" src="/img/<?= $usuario['imagem'] ?>" alt="">
-									<p class="quemSeguirTitulo"> <?= $usuario['nome'] ?> </p> 
+									<p class="quemSeguirTitulo"> <?= $usuario['nome'] ?> </p>
+									<p class="arroba"> <?= $usuario['nickname'] ?> </p>
+									<p class="arroba"> <?= $usuario['descricao'] ?> </p>
 								</div>  
 								<div class="col-md-3 d-flex justify-content-end">
 									<div>

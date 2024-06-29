@@ -40,7 +40,7 @@ class Tweet extends Model {
         $query = "
         select t.id,
         t.id_usuario,
-        u.nome, t.tweet,
+        u.nome, u.nickname, u.imagem, t.tweet,
         DATE_FORMAT(t.data, '%d/%m/%y') as data 
         from tweets as t 
         left join usuarios as u on (t.id_usuario = u.id)

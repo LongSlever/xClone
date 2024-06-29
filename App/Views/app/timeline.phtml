@@ -33,11 +33,9 @@
 
 			<div class="perfil">
 				<div class="perfilTopo">
-
 				</div>
-
 				<div class="perfilPainel">
-				<div class="row mt-2 mb-2">
+					<div class="row mt-2 mb-2">
 						<div class="col mb-2">
 							<img class="perfilFoto" src="/img/<?= $this->view->info_usuario['imagem'] ?>">
 						</div>
@@ -45,8 +43,14 @@
 					<div class="row mt-2 mb-2">
 						<div class="col mb-2">
 							<span class="perfilTitulo">
-								<?= $this->view->info_usuario['nome'] ?>
+								<?= $this->view->info_usuario['nome'] ?> <button class="btn btn-button-editar" data-toggle="modal" data-target="#editarModal"> Editar Perfil </button>
+								<p class="arroba"> <?= $this->view->info_usuario['nickname'] ?> </p>
 							</span>
+						</div>
+					</div>
+					<div class="row mt-2 mb-2">
+						<div class="col mb-2">
+								<p class="descricao"> <?= $this->view->info_usuario['descricao'] ?> </p>
 						</div>
 					</div>
 
@@ -93,8 +97,9 @@
 			<?php foreach($this->view->tweets as $id_tweet => $tweet) { ?> 
 			<div class="row tweet">
 				<div class="col">
-					<img class="perfilFotoTweet" src="/img/<?= $this->view->info_usuario['imagem'] ?>">
+					<img class="perfilFotoTweet" src="/img/<?= $tweet['imagem'] ?>">
 					<p><strong> <?=  $tweet['nome'] ?> </strong> <span class="text text-muted">- <?= $tweet['data'] ?>  </span></p>
+					<p class="arroba"> <?= $tweet['nickname'] ?> </p>
 					<p> <?= $tweet['tweet']  ?>    </p>
 					<br />
 					<form method="get" action="/deletar">
@@ -123,6 +128,56 @@
 
 	</div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="editarModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Edite seu perfil</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  <form action="/atualizar" method="post">
+              <div class="form-group">
+			  <label for="name"> Atualizar nome </label>
+                <input type="text" value="<?= $this->view->info_usuario['nome']?>" name="nome"  class="form-control" placeholder="Nome">
+              </div>
+
+              <div class="form-group">
+				<label for="nickname"> Atualizar nickname </label>
+                <input type="text" name="nickname" value="<?= $this->view->info_usuario['nickname']?>"  class="form-control" placeholder="Preencha seu @">
+              </div>
+              
+              <div class="form-group">
+			  <label for="email"> Atualizar e-mail </label>
+                <input type="text" value="<?= $this->view->info_usuario['email']?>" name="email" class="form-control" placeholder="E-mail">
+              </div>
+
+              <div class="form-group">
+			  <label for="descricao"> Atualizar descricao </label>
+                <input type="text" value="<?= $this->view->info_usuario['descricao']?>" name="descricao" class="form-control" placeholder="E-mail">
+              </div>
+
+              <div class="form-group">
+			  <label for="imagem"> Atualize a foto de perfil </label>
+                <input type="file" name="imagem" value="<?= $this->view->info_usuario['imagem']?>" class="form-control" placeholder="Senha"> 
+              </div>
+              <button type="submit" class="btn btn-button btn-block">Atualizar</button>
+
+              <?php 
+                    if($this->view->erroCadastro) {?>
+                      <small class="text-danger form-text text-center"> Ocorreu um ero, por favor digite um e-mail, nome ou NickName válido </small>
+                	 <?php } ?>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 </body>
 </html>

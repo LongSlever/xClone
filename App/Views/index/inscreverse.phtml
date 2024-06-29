@@ -28,6 +28,10 @@
               <div class="form-group">
                 <input type="text" value="<?= $this->view->usuario['nome']?>" name="nome"  class="form-control" placeholder="Nome">
               </div>
+
+              <div class="form-group">
+                <input type="text" name="nickname" value="@"  class="form-control" placeholder="Preencha seu @">
+              </div>
               
               <div class="form-group">
                 <input type="text" value="<?= $this->view->usuario['email']?>" name="email" class="form-control" placeholder="E-mail">
@@ -51,9 +55,8 @@
 
               <?php 
                     if($this->view->erroCadastro) {?>
-                      <small class="text-danger form-text text-center"> Ocorreu um ero, por favor digite um e-mail e nome válidos </small>
-                    <?php } ?> 
-              
+                      <small class="text-danger form-text text-center"> Ocorreu um ero, por favor digite um e-mail, nome ou NickName válido </small>
+                    <?php } ?>
             </form>
 
           </div>

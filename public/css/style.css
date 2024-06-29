@@ -113,11 +113,37 @@ h2 {
     border-radius: 10px;
 }
 
+.btn-button-editar {
+    color: white;
+    background-color: #040404;
+    border: 1px solid white;
+    border-radius: 10px;
+    font-size: 10px;
+    margin-left: 5px;
+
+}
+
+.btn-button-editar:hover {
+    color: white;
+    background-color: #14171a;
+    transition: 1s;
+
+}
+
 .btn-button:hover {
     color: white;
     background-color: #14171a;
     transition: 1s;
 }
+
+.btn-button input[type="submit"] {
+    color: white;
+    background-color: #040404;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+
 
 
 /* perfil */ 
@@ -126,7 +152,7 @@ h2 {
 
 .perfilTitulo {
     font-weight: bold;
-    font-size: 1,5em;
+    font-size: 1.5em;
 }
 
 .perfilFoto {
@@ -142,6 +168,15 @@ h2 {
     width: 90px;
     transition: 1s;
     border: 2px solid white;
+}
+
+.arroba {
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.descricao {
+    font-size: 12px;
 }
 
 /* tweet */
@@ -162,7 +197,7 @@ h2 {
 /* quem seguir */
 
 .quemSeguir {
-    padding: 20px;
+    padding: 10px;
     border-radius: 5px;
     border: 2px solid white;
 }
@@ -182,13 +217,8 @@ h2 {
 
 .quemSeguirTitulo {
     font-weight: bold;
-    
-}
-
-
-.quemSeguirTitulo {
-    font-weight: bold;
     font-size: 1.2em;
+    margin: 0;
 }
 
 .card-segue {
@@ -197,4 +227,17 @@ h2 {
     border-radius: 45px;
     box-shadow: 14px -10px #14171a;
 
+}
+
+/* Modal */
+
+.modal-content {
+    background-color: #000000;
+    border: 2px solid white;
+    border-radius: 25px;
+
+}
+
+.modal-body input {
+    padding: 10px;
 }

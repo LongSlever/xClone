@@ -20,8 +20,22 @@ use MF\Controller\Action;
                 $tweet->__set('id_usuario', $_SESSION['id']);
                 $tweets = $tweet->getAll();
                 $this->view->tweets = $tweets;
-            $this->render('timeline');
+                $this->render('timeline');
         }
+
+        public function atualizar() {
+                $this->validaAutenticacao();
+                $usuario = Container::getModel('Usuario');
+                $usuario->__set('id', $_SESSION['id']);    
+                $usuario->__set('nome', $_POST['nome']);
+                $usuario->__set('nickname', $_POST['nickname']);
+                $usuario->__set('email', $_POST['email']);
+                $usuario->__set('descricao', $_POST['descricao']);
+                $usuario->__set('imagem', $_POST['imagem']);
+                $usuario->atualizar();
+                header('Location: /timeline');
+        }
+        
 
         public function tweet() {
             $this->validaAutenticacao(); 
@@ -65,6 +79,7 @@ use MF\Controller\Action;
             if($pesquisarPor != '') {
                 
                 $usuario->__set('nome', $pesquisarPor);
+                $usuario->__set('nickname', $pesquisarPor);
                 $usuario->__set('id', $_SESSION['id']);
                 $usuarios = $usuario->getAll();
             }
