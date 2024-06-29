@@ -37,6 +37,11 @@
 				</div>
 
 				<div class="perfilPainel">
+				<div class="row mt-2 mb-2">
+						<div class="col mb-2">
+							<img class="perfilFoto" src="/img/<?= $this->view->info_usuario['imagem'] ?>">
+						</div>
+					</div>
 					<div class="row mt-2 mb-2">
 						<div class="col mb-2">
 							<span class="perfilTitulo">
@@ -90,15 +95,17 @@
 
 
 			<?php foreach($this->view->usuarios as $indice_arr => $usuario) { ?>
-			<div class="row mb-2 text-dark">
+			<div class="row mb-2 text-white">
 				<div class="col">
-					<div class="card">
+					<div class="card-segue">
 						<div class="card-body">
 							<div class="row">
-								<div class="col-md-6">
-									<?= $usuario['nome'] ?>
+
+								<div class="col-md-9">
+								<img class="perfilFoto" src="/img/<?= $usuario['imagem'] ?>" alt="">
+									<p class="quemSeguirTitulo"> <?= $usuario['nome'] ?> </p> 
 								</div>  
-								<div class="col-md-6 d-flex justify-content-end">
+								<div class="col-md-3 d-flex justify-content-end">
 									<div>
 									<?php if($usuario['seguindo_sn'] != 1) { ?>
 										<a href="/acao?acao=seguir&id_usuario=<?= $usuario['id'] ?>" class="btn btn-button">Seguir</a>

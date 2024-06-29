@@ -8,6 +8,7 @@ class Usuario extends Model {
     private $email;
     private $senha;
 
+    private $imagem;
     // Getters e Setters
     public function __get($atributo) {
         return $this->$atributo;
@@ -19,11 +20,12 @@ class Usuario extends Model {
 
     // salvar
     public function salvar() {
-        $query = "insert into usuarios(nome, email, senha) values(:nome, :email, :senha)";
+        $query = "insert into usuarios(nome, email, senha, imagem) values(:nome, :email, :senha, :imagem)";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue('nome', $this->__get('nome'));
         $stmt->bindValue('email', $this->__get('email'));
         $stmt->bindValue('senha', $this->__get('senha')); // método md5.
+        $stmt->bindValue('imagem', $this->__get('imagem'));
         $stmt->execute();
 
         return $this;
@@ -72,7 +74,7 @@ class Usuario extends Model {
     }
 
     public function getAll () {
-        $query = "select u.id, u.nome, u.email,
+        $query = "select u.id, u.nome, u.email, u.imagem,
         (
             select count(*)
             from usuarios_seguidores as us
@@ -113,7 +115,7 @@ class Usuario extends Model {
     }
 
     public function getInfoUsuario() {
-        $query = 'select nome from usuarios where id = :id';
+        $query = 'select nome, imagem from usuarios where id = :id';
         $stmt = $this->db->prepare($query);
         $stmt->bindValue('id', $this->__get('id'));
         $stmt->execute();

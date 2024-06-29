@@ -37,6 +37,11 @@
 				</div>
 
 				<div class="perfilPainel">
+				<div class="row mt-2 mb-2">
+						<div class="col mb-2">
+							<img class="perfilFoto" src="/img/<?= $this->view->info_usuario['imagem'] ?>">
+						</div>
+					</div>
 					<div class="row mt-2 mb-2">
 						<div class="col mb-2">
 							<span class="perfilTitulo">
@@ -88,13 +93,14 @@
 			<?php foreach($this->view->tweets as $id_tweet => $tweet) { ?> 
 			<div class="row tweet">
 				<div class="col">
+					<img class="perfilFotoTweet" src="/img/<?= $this->view->info_usuario['imagem'] ?>">
 					<p><strong> <?=  $tweet['nome'] ?> </strong> <span class="text text-muted">- <?= $tweet['data'] ?>  </span></p>
 					<p> <?= $tweet['tweet']  ?>    </p>
 					<br />
 					<form method="get" action="/deletar">
 						<div class="col d-flex justify-content-end">
 							<?php if($tweet['id_usuario'] == $_SESSION['id']) { ?> 
-							<button type="submit" class="btn btn-danger"><small>Remover</small></button>
+							<button type="submit" class="btn btn-button"><small>Remover</small></button>
 							<input type="hidden" name="id" value="<?= $tweet['id'] ?>"  >
 							<?php } ?>
 						</div>

@@ -31,6 +31,7 @@ use PDOException;
                 $usuario->__set('nome', $_POST['nome']);
                 $usuario->__set('email', $_POST['email']);
                 $usuario->__set('senha', md5($_POST['senha']));
+                $usuario->__set('img', $_POST['imagem']);
                 if($usuario->validarCadastro() && count($usuario->getUsuarioporEmail()) == 0) {
                     $usuario->salvar();
                     $this->render('cadastro');
